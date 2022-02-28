@@ -1,59 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Berkan Türel</title>
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/jquery.terminal/css/jquery.terminal.min.css"/>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="menu">
-        <div class="toggle"><img src="myphoto.jpeg" alt=""></ion-icon></div>
-        <li style="--i:0;">
-        <a href="https://www.linkedin.com/in/berkan-t%C3%BCrel-87955b223/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
-        </li>
-        <li style="--i:1;">
-            <a href="https://github.com/berkantrl" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
-        </li>
-        <li style="--i:2;">
-            <a href="https://medium.com/@berkanturel" target="_blank"><ion-icon name="logo-medium"></ion-icon></a>
-        </li>
-        <li style="--i:3;">
-            <a href="https://www.youtube.com/channel/UC2fzamh4Iiugm7rBg7_jmPg" target="_blank"><ion-icon name="logo-youtube"></ion-icon></a>
-        </li>
-        <li style="--i:4;">
-            <a href="https://www.instagram.com/berkan_turel/" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
-        </li>
-        <li style="--i:5;">
-            <a href="https://twitter.com/berkanturel" target="_blank"><ion-icon name="logo-twitter"></ion-icon></a>
-        </li>
-        <li style="--i:6;">
-            <a href="mailto: turelberkan9@gmail.com" target="_blank"><ion-icon name="at-circle"></ion-icon></a>
-        </li>
-        <li style="--i:7;">
-            <a href="https://www.berkanturel.me" target="_blank"><ion-icon name="home"></ion-icon></a>
-        </li>
-        
-    </div>
-    <div class="whoami"> 
-        <h1>Berkan Türel</h1>
-        <h4>Cyber Security Student</h4>
-        
-        <h3>If you want to see my work and my social media accounts click on my photo</h3>
-        <br>
-        <h5>Who am I</h5>
-        <p>I am 20 years old. I am 3rd year software engineering student at Fırat University.</p>
-        <p>I generally do my studies on cyber security and network security. I continue to research and work improve myself.</p>
-    </div>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+    <div class="title">Welcome To Berkan Türel WebSite</div>
     <script>
-        let toggle = document.querySelector('.toggle');
-        let menu = document.querySelector('.menu');
-        toggle.onclick = function(){
-            menu.classList.toggle('active')
+        $('body').terminal(function(command) {
+        if (command == 'ls') {
+            this.echo("whoami  blog   youtubechannel  github   linkedin  contact   readme.txt");
+            }
+        else if (command == 'cd ..') {
+            this.echo("Ooopps! Where are you going ?");
+            }
+        else if (command == 'open whoami' || command=='cd whoami') {
+            window.open("https://github.com/jcubic/jquery.terminal","_blank")
+            }
+        else if (command == 'open blog' || command == 'cd blog') {
+            window.open("https://medium.com/@berkanturel","_blank")
+            }
+        else if (command == 'open youtubechannel' || command == 'cd blogs') {
+            window.open("https://www.youtube.com/channel/UC2fzamh4Iiugm7rBg7_jmPg/videos","_blank")
+            }
+        else if (command == 'open github' || command == 'cd github') {
+            window.open("https://github.com/berkantrl","_blank")
+            }
+        else if (command == 'open contact' || command == 'cd contact') {
+            this.echo('mail: turelberkan9@gmail.com')
+            }
+        else if (command == 'open readme.txt' || command=='cd readme.txt' || command=='cd readme' || command=='open readme') {
+            this.echo("------------------------- \n\n\n    LEAVE ME HERE   \n\n\n-------------------------");
+            }
+        else if (command == 'open linkedin' || command == 'cd linkedin') {
+            window.open("https://www.linkedin.com/in/berkan-t%C3%BCrel-87955b223/","_blank")
+            } 
+        else if (command == 'help' || command=='cd --help' || command=='h' || command=='-h') {
+            this.echo("help: help menu\nls: list of file \ncd: Open the file example: cd file_name  \nopen: Open the file example: open file_name ");
+            }  
+        else {
+            this.echo('Oops! You write something wrong \nTry command help, you idiot!!!')
         }
+        
+    }, {
+        greetings: "Welcome To Berkan Türel's WebSite \nTry command something. Example help ",
+        name: 'Berkan Türel',
+        height: 550,
+        width: 750,
+        prompt: '@berkanturel.me> '
+    });
     </script>
+        
+
 </body>
 </html>
