@@ -1,4 +1,3 @@
-
 .terminal{
   position: absolute;
   top: 50%;
@@ -9,12 +8,37 @@
 }
 body{
     background: linear-gradient(to top,cadetblue,rgb(48, 48, 34));
+    background-repeat: no-repeat;
+}
+.title{
+ margin-left: 38%;
 }
 
-.title{
-    font-size: 2.5em;
-    text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-top: 10px;
-    color: aliceblue;
+p {
+  font-family: 'VT323', monospace;
+  border-right: solid 3px rgba(0,255,0,.75);
+  white-space: nowrap;
+  overflow: hidden;    
+  font-size: 28px;
+  color: rgba(34, 161, 34, 0.7);
+}
+
+/* Animation */
+p {
+  animation: animated-text 4s steps(29,end) 1s 1 normal both,
+             animated-cursor 600ms steps(29,end) infinite;
+}
+
+/* text animation */
+
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: 340px;}
+}
+
+/* cursor animations */
+
+@keyframes animated-cursor{
+  from{border-right-color: rgba(0,255,0,.75);}
+  to{border-right-color: transparent;}
 }
