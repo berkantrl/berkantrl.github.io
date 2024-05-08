@@ -1,30 +1,28 @@
-*
-{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
-    box-sizing:border-box;
+    box-sizing: border-box;
 }
 
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(to top,cadetblue,rgb(48, 48, 34));
+    background: linear-gradient(to top, cadetblue, rgb(48, 48, 34));
 }
 
-.menu
-{
+.menu {
     position: relative;
     width: 200px;
     height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    z-index: 1;
 }
-.menu li 
-{
+
+.menu li {
     position: absolute;
     left: 0;
     list-style: none;
@@ -32,14 +30,13 @@ body{
     transition: 0.5s;
     transition-delay: calc(0.1s * var(--i));
     transform: rotate(0deg) translateX(80px);
-    
 }
-.menu.active li
-{
+
+.menu.active li {
     transform: rotate(calc(360deg / 8 * var(--i)));
 }
-.menu li a 
-{
+
+.menu li a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,13 +49,12 @@ body{
     color: #111;
     transition: 0.5s;
 }
-.menu li a:hover
-{
+
+.menu li a:hover {
     color: #ff1252;
 }
 
-.toggle img
-{
+.toggle img {
     position: relative;
     width: 100px;
     height: 100px;
@@ -74,18 +70,17 @@ body{
     transition: transform 1.25s;
 }
 
-.menu.active .toggle
-{
+.menu.active .toggle {
     transform: rotate(315deg);
 }
 
-.whoami h1,h4,h3,p,h5
-{
+.whoami {
     text-align: center;
     color: #fff;
     font-family: sans-serif;
+    margin: 50px; /* Sayfanın üstünden ve altından boşluk bırakır */
 }
-.whoami h1,h4,h5
-{
+
+.whoami h1, .whoami h4, .whoami h5 {
     color: rgb(36, 3, 3);
 }
