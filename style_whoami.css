@@ -84,3 +84,14 @@ body {
 .whoami h1, .whoami h4, .whoami h5 {
     color: rgb(36, 3, 3);
 }
+
+.cv {
+    color: #fff; /* Bağlantı metninin rengini beyaz yap */
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    font-weight: bold; /* Metnin kalın olmasını sağla */
+    transition: color 0.3s ease-in-out; /* Renk değişimine animasyon ekle */
+}
+
+.cv:hover {
+    color: #ff1252; /* Üzerine gelindiğinde rengi değiştir */
+}
