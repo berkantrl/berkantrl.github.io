@@ -5,13 +5,19 @@
   transform: translateX(-50%) translateY(-50%);
   opacity: .7;
   border-radius: 15px;
+  z-index: 1; /* Komut satırının metnin önünde kalmasını sağlar */
 }
+
 body{
     background: linear-gradient(to top,cadetblue,rgb(48, 48, 34));
     background-repeat: no-repeat;
+    position: relative; /* Body'nin position'ını relative yaparak komut satırının içinde olmasını sağlar */
 }
+
 .title{
  margin-left: 38%;
+ z-index: 2; /* Başlık metninin komut satırının önünde kalmasını sağlar */
+ position: relative; /* Başlığın konumlandırılmasını sağlar */
 }
 
 p {
@@ -22,6 +28,7 @@ p {
   overflow: hidden;    
   font-size: 28px;
   color: rgba(34, 161, 34, 0.7);
+  position: relative; /* Animasyonun düzgün çalışması için */
 }
 
 /* Animation */
