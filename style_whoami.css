@@ -74,11 +74,11 @@ body {
     transform: rotate(315deg);
 }
 
-.whoami {
-    text-align: center;
-    color: #fff;
-    font-family: sans-serif;
-    margin: 50px; /* Sayfanın üstünden ve altından boşluk bırakır */
+.whoami p {
+    font-size: 16px; /* Yazı boyutunu küçült */
+    max-width: 80%; /* Metnin ekranın genişliğini aşmasını önler */
+    margin: 0 auto; /* Metni ortalamak için */
+    line-height: 1.5; /* Satır aralığını artırır */
 }
 
 .whoami h1, .whoami h4, .whoami h5 {
