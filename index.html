@@ -11,44 +11,61 @@
 <title>Berkan Türel</title>
 </head>
 <body>
-    <p class="title">Welcome To My Personel WebSite</p>
-    <script>
-        $('body').terminal(function(command) {
-        if (command == 'ls') {
-            this.echo("whoami  blog   youtubechannel  github   linkedin  contact   readme.txt");
+
+<p class="title">Welcome To My Personal Website</p>
+
+<script>
+    $(function() {
+        // Define commands and their actions
+        var commands = {
+            'ls': function() {
+                this.echo("whoami  blog   youtubechannel  github   linkedin  contact   readme.txt");
+            },
+            'cd': function(arg) {
+                this.echo("Ooopps! 'cd' command is not supported in this terminal.");
+            },
+            'open': function(arg) {
+                var urls = {
+                    'whoami': "/whoami.html",
+                    'blog': "https://medium.com/@berkanturel",
+                    'youtubechannel': "https://www.youtube.com/channel/UC2fzamh4Iiugm7rBg7_jmPg/videos",
+                    'github': "https://github.com/berkantrl",
+                    'linkedin': "https://www.linkedin.com/in/berkan-t%C3%BCrel-87955b223/",
+                    'contact': "mailto:turelberkan9@gmail.com",
+                    'readme.txt': "------------------------- \n\n\n    LEAVE ME HERE   \n\n\n-------------------------"
+                };
+                if(urls[arg]){
+                    window.open(urls[arg], "_blank");
+                } else {
+                    this.echo("Invalid argument for 'open' command.");
+                }
+            },
+            'help': function() {
+                this.echo("Available commands:\nls\t\tList files\ncd\t\tChange directory\nopen\t\tOpen file\ncat\t\tDisplay the contents of a file\nhelp\t\tShow help menu");
+            },
+            'cat': function(arg) {
+                if (arg === 'readme.txt') {
+                    this.echo("Contents of readme.txt:\n------------------------- \n\n\n    LEAVE ME HERE   \n\n\n-------------------------");
+                } else {
+                    this.echo("File not found: " + arg);
+                }
             }
-        else if (command == 'cd ..') {
-            this.echo("Ooopps! Where are you going ?");
+        };
+
+        // Initialize terminal
+        $('body').terminal(function(command, term) {
+            var parts = command.split(' ');
+            var cmd = parts[0];
+            var arg = parts.slice(1).join(' ');
+            if (commands[cmd]) {
+                commands[cmd].call(term, arg);
+            } else {
+                this.echo("Command not found: " + cmd);
             }
-        else if (command == 'open whoami' || command=='cd whoami') {
-            window.open("/whoami.html","_blank")
-            }
-        else if (command == 'open blog' || command == 'cd blog') {
-            window.open("https://medium.com/@berkanturel","_blank")
-            }
-        else if (command == 'open youtubechannel' || command == 'cd youtubechannel') {
-            window.open("https://www.youtube.com/channel/UC2fzamh4Iiugm7rBg7_jmPg/videos","_blank")
-            }
-        else if (command == 'open github' || command == 'cd github') {
-            window.open("https://github.com/berkantrl","_blank")
-            }
-        else if (command == 'open contact' || command == 'cd contact') {
-            this.echo('mail: turelberkan9@gmail.com')
-            }
-        else if (command == 'open readme.txt' || command=='cd readme.txt' || command=='cd readme' || command=='open readme') {
-            this.echo("------------------------- \n\n\n    LEAVE ME HERE   \n\n\n-------------------------");
-            }
-        else if (command == 'open linkedin' || command == 'cd linkedin') {
-            window.open("https://www.linkedin.com/in/berkan-t%C3%BCrel-87955b223/","_blank")
-            } 
-        else if (command == 'help' || command=='cd --help' || command=='h' || command=='-h') {
-            this.echo("help: help menu\nls: list of file \ncd: Open the file example: cd file_name  \nopen: Open the file example: open file_name ");
-            }  
-        else {
-            this.echo('Oops! You write something wrong \nTry command help, you idiot!!!')
-        }
-        
-    }, {
+        }, {
+            greetings: 'Welcome to My Personal Terminal! Type "help" to see available commands.'
+        });
+    }), {
         greetings: "Welcome To Berkan Türel's WebSite \nTry command something. Example help ",
         name: 'Berkan Türel',
         height: 550,
