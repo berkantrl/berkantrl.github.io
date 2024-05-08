@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/jquery.terminal/css/jquery.terminal.min.css"/>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <title>Berkan Türel</title>
+</head>
+<body>
+    <script>
+        $('body').terminal(function(command, term) {
+            var commands = {
+                'ls': function() {
+                    term.echo("whoami  blog  youtubechannel  github  linkedin  contact  readme.txt");
+                },
+                'cd': function(param) {
+                    switch (param) {
+                        case '..':
+                            term.echo("Oops! Where are you going?");
+                            break;
+                        case 'whoami':
+                            window.open("/whoami.html", "_blank");
+                            break;
+                        case 'blog':
+                            window.open("https://medium.com/@berkanturel", "_blank");
+                            break;
+                        case 'youtubechannel':
+                            window.open("https://www.youtube.com/channel/UC2fzamh4Iiugm7rBg7_jmPg/videos", "_blank");
+                            break;
+                        case 'github':
+                            window.open("https://github.com/berkantrl", "_blank");
+                            break;
+                        case 'contact':
+                            term.echo('mail: turelberkan9@gmail.com');
+                            break;
+                        case 'readme.txt':
+                            term.echo("-------------------------\n\n\n    LEAVE ME HERE\n\n\n-------------------------");
+                            break;
+                        case 'linkedin':
+                            window.open("https://www.linkedin.com/in/berkan-t%C3%BCrel-87955b223/", "_blank");
+                            break;
+                        default:
+                            term.echo("Unknown directory: " + param);
+                    }
+                },
+                'cat': function(param) {
+                    if (param == 'readme.txt') {
+                        term.echo("-------------------------\n\n\n    LEAVE ME HERE\n\n\n-------------------------");
+                    } else {
+                        term.echo("File not found: " + param);
+                    }
+                },
+                'help': function() {
+                    term.echo("Available commands:\nls: list files\ncd [directory]: change directory\ncat [file]: view file contents\nopen [file]: open file\nhelp: display this help message");
+                }
+            };
+
+            var parts = command.split(' ');
+            var baseCmd = parts[0];
+            var param = parts[1];
+
+            if (commands[baseCmd]) {
+                commands[baseCmd](param);
+            } else {
+                term.echo("Unknown command: " + command);
+            }
+        }, {
+            greetings: "Welcome To Berkan Türel's Website\nType 'help' for available commands.",
+            name: 'Berkan Türel',
+            height: 550,
+            width: 750,
+            prompt: '@berkanturel.com> '
+        });
+    </script>
+</body>
+</html>
