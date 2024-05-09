@@ -20,7 +20,7 @@
         $('body').terminal(function(command, term) {
             var commands = {
                 'ls': function() {
-                    term.echo("whoami  blog  youtubechannel  github  linkedin  contact  readme.txt");
+                    term.echo("whoami  blog  cv  github  linkedin  contact  readme.txt");
                 },
                 'cd': function(param) {
                     switch (param) {
@@ -28,13 +28,13 @@
                             term.echo("Oops! Where are you going?");
                             break;
                         case 'whoami':
-                            window.open("/whoami");
+                            window.open("/whoami", "_self");
                             break;
                         case 'blog':
                             window.open("https://medium.com/@berkanturel", "_blank");
                             break;
-                        case 'youtubechannel':
-                            window.open("https://www.youtube.com/channel/UC2fzamh4Iiugm7rBg7_jmPg/videos", "_blank");
+                        case 'cv':
+                            window.open("cv.pdf", "_blank");
                             break;
                         case 'github':
                             window.open("https://github.com/berkantrl", "_blank");
